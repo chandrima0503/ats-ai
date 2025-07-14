@@ -2,6 +2,8 @@
 
 An AI-powered Applicant Tracking System (ATS) backend that parses, embeds, and ranks resumes using NLP and vector search.
 
+<img width="1480" height="685" alt="image" src="https://github.com/user-attachments/assets/2b5e91e3-0f75-4f4f-b251-26202fb9b3b5" />
+
 ## Features
 
 - **Resume Parsing:** Extracts name, skills, and summary from uploaded resumes (PDF).
@@ -90,5 +92,5 @@ Replace `<job_id>` with the ID returned from the previous job creation step.
 
 MIT License
 
-<img width="1480" height="685" alt="image" src="https://github.com/user-attachments/assets/2b5e91e3-0f75-4f4f-b251-26202fb9b3b5" />
+
 
