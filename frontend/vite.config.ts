@@ -7,6 +7,11 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 
 // https://vite.dev/config/
 export default defineConfig({
+  server: {
+    fs: {
+      allow: ['.', 'node_modules'] // or explicitly allow 'node_modules' if needed
+    }
+  },
   plugins: [
     vue(),
     vueJsx(),

@@ -8,9 +8,11 @@ export const uploadResume = (file: File) => {
   return api.post("/resumes", form);
 };
 
-export const addJob = (description: string) => api.post("/jobs", { description });
+export const addJob = (data: { title: string; description: string }) => api.post("/jobs", data);
 
-export const getMatches = (jobId: string) => api.get("/match", { params: { job_id: jobId } });
+export const getMatches = (jobId: string) => api.get(`/jobs/${jobId}/rank`);
 
 export const chatResume = (resumeId: string, question: string) =>
   api.get("/match/chat", { params: { resume_id: resumeId, question } });
+
+export const listResumes = () => api.get("/resumes/");

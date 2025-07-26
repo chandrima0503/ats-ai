@@ -4,5 +4,6 @@
 __pycache__/
 /backend/venv/
 *.bin
+node_modules/
 
 

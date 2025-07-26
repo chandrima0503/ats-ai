@@ -38,7 +38,7 @@ def add_to_vector_store(vector, metadata):
 
 def add_job_vector(vector, description, metadata=None):
     job_id = str(uuid.uuid4())
-    meta = metadata if metadata else {"type": "job"}
+    meta = metadata if metadata else {}
     collection.add(
         documents=[description],
         embeddings=[vector],
@@ -53,6 +53,7 @@ def add_job_vector(vector, description, metadata=None):
 
 def rank_resumes_for_job(job_id):
     job_doc = collection.get(ids=[job_id], include=["embeddings", "documents", "metadatas"])
+    print("Job doc:", job_doc)
     if (
         not job_doc
         or "embeddings" not in job_doc
@@ -61,5 +62,20 @@ def rank_resumes_for_job(job_id):
     ):
         raise ValueError(f"Job with id {job_id} not found in vector store.")
     job_vector = job_doc["embeddings"][0]
-    results = collection.query(query_embeddings=[job_vector], n_results=5)
-    return results
+    print("Job vector:", job_vector)
+    results = collection.query(query_embeddings=[job_vector], n_results=5, include=["metadatas"])
+    print("Query results:", results)
+    resume_metadatas = []
+    metadatas = results.get("metadatas", [])
+    for meta_list in metadatas:
+        if not isinstance(meta_list, list):
+            continue
+        for meta in meta_list:
+            if meta:
+                resume_metadatas.append(meta)
+    return resume_metadatas
+
+def list_all_items():
+    items = collection.get(include=["metadatas", "documents", "ids"])
+    print("All items in collection:", items)
+    return items
