@@ -2,7 +2,8 @@
 
 An AI-powered Applicant Tracking System (ATS) that parses, embeds, stores, and ranks resumes using NLP and vector search.
 
-![Uploading image.png…]()
+<img width="2926" height="1370" alt="image" src="https://github.com/user-attachments/assets/fa790287-8309-47dc-a56b-0190573dcbc2" />
+
 
 
 ## Features
